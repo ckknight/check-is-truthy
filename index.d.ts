@@ -9,6 +9,7 @@
  *
  * In some browser contexts, `document.all` is also falsy.
  *
+ * @see https://developer.mozilla.org/en-US/docs/Glossary/Truthy
  * @see https://developer.mozilla.org/en-US/docs/Glossary/Falsy
  */
 export declare type FalsyValue = false | 0 | -0 | 0n | "" | null | undefined;
@@ -25,7 +26,7 @@ export declare type FalsyValue = false | 0 | -0 | 0n | "" | null | undefined;
  * This can be particularly useful when used withh `.filter` methods on arrays
  * or other collections.
  *
- * @see https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+ * @see https://developer.mozilla.org/en-US/docs/Glossary/Truthy
  * @param value The value to convert to a boolean.
  * @returns `true` if `value` is "truthy", `false` otherwise.
  * @example isTruthy(true) === true
