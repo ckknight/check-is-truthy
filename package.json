@@ -29,5 +29,10 @@
   "scripts": {
     "build": "tsc && tsc --declaration --emitDeclarationOnly --removeComments false && tsc --outDir cjs --module commonjs --target es5",
     "test": "node --test"
+  },
+  "auto": {
+    "plugins": [
+      "npm"
+    ]
   }
 }
