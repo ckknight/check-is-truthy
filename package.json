@@ -1,0 +1,33 @@
+{
+  "name": "check-is-truthy",
+  "version": "0.0.0",
+  "description": "Utilities and types to help with simple Boolean checks",
+  "main": "cjs/index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "require": "./cjs/index.js"
+    }
+  },
+  "repository": "https://github.com/ckknight/check-is-truthy",
+  "author": "Cameron Knight <ckknight@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "cjs/index.js"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.8.2",
+    "typescript": "^4.8.4"
+  },
+  "scripts": {
+    "build": "tsc && tsc --declaration --emitDeclarationOnly --removeComments false && tsc --outDir cjs --module commonjs --target es5",
+    "test": "node --test"
+  }
+}
