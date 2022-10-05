@@ -1,6 +1,6 @@
 {
   "name": "check-is-truthy",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Utilities and types to help with simple Boolean checks",
   "main": "cjs/index.js",
   "module": "index.js",
