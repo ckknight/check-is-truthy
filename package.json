@@ -18,7 +18,9 @@
     "is-truthy",
     "istruthy",
     "is-falsy",
-    "isfalsy"
+    "isfalsy",
+    "types",
+    "typescript"
   ],
   "main": "cjs/index.js",
   "module": "index.js",
