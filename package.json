@@ -1,6 +1,6 @@
 {
   "name": "check-is-truthy",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Utilities and types to help with simple Boolean checks",
   "keywords": [
     "boolean",
