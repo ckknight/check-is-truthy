@@ -22,7 +22,7 @@
     "types",
     "typescript"
   ],
-  "main": "cjs/index.js",
+  "main": "index.cjs",
   "module": "index.js",
   "types": "index.d.ts",
   "type": "module",
@@ -31,7 +31,7 @@
     ".": {
       "types": "./index.d.ts",
       "import": "./index.js",
-      "require": "./cjs/index.js"
+      "require": "./index.cjs"
     }
   },
   "repository": "https://github.com/ckknight/check-is-truthy",
@@ -40,14 +40,14 @@
   "files": [
     "index.js",
     "index.d.ts",
-    "cjs/index.js"
+    "index.cjs"
   ],
   "devDependencies": {
     "@types/node": "^18.8.2",
     "typescript": "^4.8.4"
   },
   "scripts": {
-    "build": "tsc && tsc --declaration --emitDeclarationOnly --removeComments false && tsc --outDir cjs --module commonjs --target es5",
+    "build": "tsc && tsc --declaration --emitDeclarationOnly --removeComments false && tsc --outDir cjs --module commonjs --target es5 && mv cjs/index.js index.cjs",
     "test": "node --test"
   },
   "auto": {
