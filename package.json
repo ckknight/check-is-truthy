@@ -22,32 +22,32 @@
     "types",
     "typescript"
   ],
-  "main": "index.cjs",
-  "module": "index.js",
-  "types": "index.d.ts",
+  "main": "check-is-truthy.cjs",
+  "module": "check-is-truthy.js",
+  "types": "check-is-truthy.d.ts",
   "type": "module",
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "import": "./index.js",
-      "require": "./index.cjs"
+      "types": "./check-is-truthy.d.ts",
+      "import": "./check-is-truthy.js",
+      "require": "./check-is-truthy.cjs"
     }
   },
   "repository": "https://github.com/ckknight/check-is-truthy",
   "author": "Cameron Knight <ckknight@gmail.com>",
   "license": "MIT",
   "files": [
-    "index.js",
-    "index.d.ts",
-    "index.cjs"
+    "check-is-truthy.js",
+    "check-is-truthy.d.ts",
+    "check-is-truthy.cjs"
   ],
   "devDependencies": {
     "@types/node": "^18.8.2",
     "typescript": "^4.8.4"
   },
   "scripts": {
-    "build": "tsc && tsc --declaration --emitDeclarationOnly --removeComments false && tsc --outDir cjs --module commonjs --target es5 && mv cjs/index.js index.cjs",
+    "build": "tsc && tsc --declaration --emitDeclarationOnly --removeComments false && mv dist/* . && tsc --module commonjs --target es5 && mv dist/check-is-truthy.js check-is-truthy.cjs",
     "test": "node --test"
   },
   "auto": {

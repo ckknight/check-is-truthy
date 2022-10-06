@@ -1,7 +1,7 @@
 // @ts-check
 import * as assert from "node:assert";
 import test from "node:test";
-import * as exports from "./index.js";
+import * as exports from "./check-is-truthy.js";
 
 test("exports", () => {
   assert.deepStrictEqual(Object.keys(exports).sort(), [
