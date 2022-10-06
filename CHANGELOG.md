@@ -1,3 +1,15 @@
+# v0.0.3 (Thu Oct 06 2022)
+
+#### ⚠️ Pushed to `main`
+
+- move commonjs output to have .cjs extension ([@ckknight](https://github.com/ckknight))
+
+#### Authors: 1
+
+- Cameron Knight ([@ckknight](https://github.com/ckknight))
+
+---
+
 # v0.0.2 (Thu Oct 06 2022)
 
 #### ⚠️ Pushed to `main`
