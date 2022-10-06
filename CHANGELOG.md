@@ -1,3 +1,15 @@
+# v0.0.4 (Thu Oct 06 2022)
+
+#### ⚠️ Pushed to `main`
+
+- change export path to be `check-is-truthy.*`, for better debugging ([@ckknight](https://github.com/ckknight))
+
+#### Authors: 1
+
+- Cameron Knight ([@ckknight](https://github.com/ckknight))
+
+---
+
 # v0.0.3 (Thu Oct 06 2022)
 
 #### ⚠️ Pushed to `main`
