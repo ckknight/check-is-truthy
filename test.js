@@ -5,7 +5,9 @@ import * as exports from "./check-is-truthy.js";
 
 test("exports", () => {
   assert.deepStrictEqual(Object.keys(exports).sort(), [
+    "NaN",
     "isFalsy",
+    "isNaN",
     "isTruthy",
     "toggle",
   ]);

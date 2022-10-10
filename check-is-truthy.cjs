@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toggle = exports.isFalsy = exports.isTruthy = void 0;
+exports.toggle = exports.isFalsy = exports.isTruthy = exports.isNaN = exports.NaN = void 0;
+exports.NaN = (0 / 0);
+var isNaN = function (value) { return value !== value; };
+exports.isNaN = isNaN;
 var isTruthy = function (value) {
     return !!value;
 };
 exports.isTruthy = isTruthy;
-var isFalsy = function (value) { return !value; };
-exports.isFalsy = isFalsy;
+exports.isFalsy = (function (value) { return !value; });
 exports.toggle = exports.isFalsy;

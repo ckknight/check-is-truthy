@@ -71,3 +71,21 @@ function doSomething<T>(
   }
 }
 ```
+
+## `NaN`
+
+The reserved value `NaN`. This is equivalent to the global `NaN` value.
+
+This has a special type of `NaN`, which is an opaque value that can represent
+`NaN`.
+
+It is not fully safe to use, as `NaN` values can be easily created through other
+means that are not typed as `NaN`.
+
+## `isNaN`
+
+Equivalent to
+[`Number.isNaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN).
+
+This is provided as a convenience as a check for the `NaN` value as the `NaN`
+type.

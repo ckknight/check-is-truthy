@@ -1,9 +1,31 @@
+declare const NAN: unique symbol;
+/**
+ * An opaque type representing `NaN` within the type system.
+ *
+ * This can be used to represent `NaN` in type contexts, but is not generated
+ * automatically.
+ */
+export declare type NaN = number & {
+    [NAN]: never;
+};
+/**
+ * The reserved value `NaN`. This is equivalent to the global `NaN` value.
+ */
+export declare const NaN: NaN;
+/**
+ * Returns `true` if the provided `value` is the reserved value `NaN`, `false`
+ * otherwise.
+ *
+ * Only values of the type `number` can be `NaN`, so this is equivalent to
+ * [`Number.isNaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN).
+ */
+export declare const isNaN: (value: unknown) => value is NaN;
 /**
  * A "falsy" value in JavaScript is a value that is considered false when
  * encountered in a Boolean context.
  *
- * `NaN` is not represented in the type system separately from `number`,
- * despite being falsy.
+ * `NaN` is not represented in the type system separately from `number`, despite
+ * being falsy. It is added to this union via the opaque {@link NaN} type.
  *
  * Also, `-0` is not represented separately from `0`.
  *
@@ -12,7 +34,7 @@
  * @see https://developer.mozilla.org/en-US/docs/Glossary/Truthy
  * @see https://developer.mozilla.org/en-US/docs/Glossary/Falsy
  */
-export declare type FalsyValue = false | 0 | -0 | 0n | "" | null | undefined;
+export declare type FalsyValue = false | 0 | -0 | 0n | NaN | "" | null | undefined;
 /**
  * Returns whether the provided `value` is considered "truthy" in boolean
  * contexts.
@@ -23,7 +45,7 @@ export declare type FalsyValue = false | 0 | -0 | 0n | "" | null | undefined;
  *
  * This is the inverse of {@link isFalsy}.
  *
- * This can be particularly useful when used withh `.filter` methods on arrays
+ * This can be particularly useful when used with `.filter` methods on arrays
  * or other collections.
  *
  * @see https://developer.mozilla.org/en-US/docs/Glossary/Truthy
@@ -83,7 +105,15 @@ export declare const isTruthy: <T>(value: T) => value is Exclude<T, FalsyValue>;
  * @example isFalsy([]) === false
  * @example isFalsy(new Map()) === false
  */
-export declare const isFalsy: <T>(value: T) => value is Extract<T, FalsyValue>;
+export declare const isFalsy: {
+    <T extends {
+        readonly [key: PropertyKey]: string | number;
+    }, K extends keyof T>(value: T[K]): value is T[K] & FalsyValue;
+    <T extends {
+        readonly [key: PropertyKey]: string | number;
+    }, K extends keyof T, U>(value: T[K] | U): value is (T[K] | U) & FalsyValue;
+    <V extends unknown>(value: V): value is V & FalsyValue;
+};
 /**
  * Returns the logical opposite of the provided `value`.
  *
@@ -103,3 +133,4 @@ export declare const isFalsy: <T>(value: T) => value is Extract<T, FalsyValue>;
  *   }
  */
 export declare const toggle: (value: boolean) => boolean;
+export {};

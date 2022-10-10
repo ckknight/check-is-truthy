@@ -1,9 +1,31 @@
+declare const NAN: unique symbol;
+/**
+ * An opaque type representing `NaN` within the type system.
+ *
+ * This can be used to represent `NaN` in type contexts, but is not generated
+ * automatically.
+ */
+export type NaN = number & { [NAN]: never };
+/**
+ * The reserved value `NaN`. This is equivalent to the global `NaN` value.
+ */
+export const NaN = (0 / 0) as NaN;
+
+/**
+ * Returns `true` if the provided `value` is the reserved value `NaN`, `false`
+ * otherwise.
+ *
+ * Only values of the type `number` can be `NaN`, so this is equivalent to
+ * [`Number.isNaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN).
+ */
+export const isNaN = (value: unknown): value is NaN => value !== value;
+
 /**
  * A "falsy" value in JavaScript is a value that is considered false when
  * encountered in a Boolean context.
  *
- * `NaN` is not represented in the type system separately from `number`,
- * despite being falsy.
+ * `NaN` is not represented in the type system separately from `number`, despite
+ * being falsy. It is added to this union via the opaque {@link NaN} type.
  *
  * Also, `-0` is not represented separately from `0`.
  *
@@ -17,7 +39,7 @@ export type FalsyValue =
   | 0
   | -0 // this is the same as `0` in the type system and will be converged into `0`
   | 0n
-  // | NaN // `NaN` is not represented in the type system separately from `number`
+  | NaN // `NaN` is not truly represented in the type system separately from `number`
   | ""
   | null
   | undefined;
@@ -32,7 +54,7 @@ export type FalsyValue =
  *
  * This is the inverse of {@link isFalsy}.
  *
- * This can be particularly useful when used withh `.filter` methods on arrays
+ * This can be particularly useful when used with `.filter` methods on arrays
  * or other collections.
  *
  * @see https://developer.mozilla.org/en-US/docs/Glossary/Truthy
@@ -60,7 +82,7 @@ export type FalsyValue =
  * @example [{}, null, {}].filter(isTruthy) //=> [{}, {}]
  * @example ['hello', '', 'world'].filter(isTruthy) //=> ['hello', 'world']
  */
-export const isTruthy = <T,>(value: T): value is Exclude<T, FalsyValue> =>
+export const isTruthy = <T>(value: T): value is Exclude<T, FalsyValue> =>
   !!value;
 
 /**
@@ -94,7 +116,29 @@ export const isTruthy = <T,>(value: T): value is Exclude<T, FalsyValue> =>
  * @example isFalsy([]) === false
  * @example isFalsy(new Map()) === false
  */
-export const isFalsy = <T,>(value: T): value is Extract<T, FalsyValue> => !value;
+export const isFalsy: {
+  // enum case
+  <
+    T extends {
+      readonly [key: PropertyKey]: string | number;
+    },
+    K extends keyof T
+  >(
+    value: T[K]
+  ): value is T[K] & FalsyValue;
+  // enum case that allows for other values as well
+  <
+    T extends {
+      readonly [key: PropertyKey]: string | number;
+    },
+    K extends keyof T,
+    U
+  >(
+    value: T[K] | U
+  ): value is (T[K] | U) & FalsyValue;
+  // standard case
+  <V extends unknown>(value: V): value is V & FalsyValue;
+} = ((value: any) => !value) as any;
 
 /**
  * Returns the logical opposite of the provided `value`.
