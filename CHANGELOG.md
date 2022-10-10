@@ -1,3 +1,15 @@
+# v0.0.5 (Mon Oct 10 2022)
+
+#### ⚠️ Pushed to `main`
+
+- add type tests and NaN handling ([@ckknight](https://github.com/ckknight))
+
+#### Authors: 1
+
+- Cameron Knight ([@ckknight](https://github.com/ckknight))
+
+---
+
 # v0.0.4 (Thu Oct 06 2022)
 
 #### ⚠️ Pushed to `main`
