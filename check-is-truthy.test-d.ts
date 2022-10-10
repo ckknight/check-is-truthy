@@ -293,3 +293,11 @@ if (isNaN(someUnknown)) {
 }
 
 expectError(toggle(someUnknown));
+
+declare const arrayWithSomeNulls: Array<{ hello: "world" } | null>;
+
+expectType<Array<{ hello: "world" }>>(arrayWithSomeNulls.filter(isTruthy));
+
+if (arrayWithSomeNulls.every(isTruthy)) {
+  expectType<Array<{ hello: "world" }>>(arrayWithSomeNulls);
+}

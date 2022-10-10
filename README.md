@@ -5,6 +5,33 @@ Utilities and types to help with simple Boolean checks
 This is intended to be used with TypeScript, but it should work with JavaScript
 as well.
 
+This package is side-effect free and can be fully
+[tree-shaken](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking).
+
+## Installation
+
+```sh
+npm install check-is-truthy
+```
+
+or
+
+```sh
+yarn add check-is-truthy
+```
+
+## Why is this useful?
+
+By and large, the primary useful thing about this package is the `isTruthy`
+function which can be used within standard JavaScript functions like
+[`Array.prototype.filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+or within other utilities which take a predicate function with a type guard,
+such as [Lodash's \_.find](https://lodash.com/docs/4.17.15#find).
+
+Though the same behavior can be achieved at runtime by calling the `Boolean`
+constructor as a function, TypeScript makes no special handling of this with
+regards to type guards as mentioned above.
+
 ## `isTruthy`
 
 `isTruthy` is a function that takes a value and returns a boolean indicating

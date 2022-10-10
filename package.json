@@ -44,7 +44,7 @@
   ],
   "scripts": {
     "build": "tsc && tsc --declaration --emitDeclarationOnly --removeComments false && mv dist/* . && tsc --module commonjs --target es5 && mv dist/check-is-truthy.js check-is-truthy.cjs",
-    "format": "npx prettier --write *test* package.json src/* check-is-truthy.test-d.ts && npx sort-package-json",
+    "format": "npx prettier --write *test* package.json src/* check-is-truthy.test-d.ts *.md && npx sort-package-json",
     "test": "node --test && tsd"
   },
   "devDependencies": {
